@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home Inventory</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+
+<div id="container" class="container">
+    <h1 class="text-center">Home Inventory</h1>
+    <table class="table">
+        <tr>
+            <td>Item</td>
+            <td>Description</td>
+            <td>Value</td>
+            <td>Room</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <% for(var i=0; i<items.length; i++) {%>
+        <tr id=<%= JSON.parse(JSON.stringify(items[i].itemsid)) %>>
+            <td><%= JSON.parse(JSON.stringify(items[i].name)) %></td>
+            <td><%= JSON.parse(JSON.stringify(items[i].description)) %></td>
+            <td><%= JSON.parse(JSON.stringify(items[i].value)) %></td>
+            <td><%= JSON.parse(JSON.stringify(items[i].roomname)) %></td>
+            <td><button class = 'delete'>Delete Item</button></td>
+            <td><button class = 'edit'>Edit Item</button></td>
+        </tr>
+
+        <% } %>
+    </table>
+    <form>
+        <input id="item" type="text" placeholder="Name of item"/>
+        <input id="desc" type="text" placeholder="Description"/>
+        <input id="value" type="text" placeholder="Value"/>
+        <select id="rooms" class="dropdown"></select>
+        <button id="post" type="submit">Add item to List</button>
+    </form>
+    <button id="addroom">Add room to list</button>
+    <button id="delroom">Delete room from list</button>
+    <div class="modal fade" id="addRoomModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input id="roomname" type="text" placeholder="Name of room"/>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="makeroom" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="delRoomModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <select id="delrooms" class="dropdown"></select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" id="remove" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
